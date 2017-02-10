@@ -7,6 +7,8 @@ from PyQt5.QtGui import (QPalette, QColor, QPixmap)
 print("This "
       "is a test "
       "to show how text can wrap.")
+
+
 class Color(QWidget):
 
     def __init__(self, color, *args, **kwargs):
