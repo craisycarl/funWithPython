@@ -198,28 +198,28 @@ def do_similarity():
 
 
 def do_simulation():
-    schelling_1 = Schelling(50, 50, 0.3, 0.8, 500, 2)
+    schelling_1 = Schelling(50, 50, 0.3, 0.3, 500, 2)
     schelling_1.populate()
 
-    # schelling_2 = Schelling(50, 50, 0.3, 0.5, 500, 2)
-    # schelling_2.populate()
-    #
-    # schelling_3 = Schelling(50, 50, 0.3, 0.8, 500, 2)
-    # schelling_3.populate()
+    schelling_2 = Schelling(50, 50, 0.3, 0.5, 500, 2)
+    schelling_2.populate()
 
-    # schelling_1.plot('Schelling Model with 2 colors: Initial State', 'schelling_2_initial.png')
+    schelling_3 = Schelling(50, 50, 0.3, 0.8, 500, 2)
+    schelling_3.populate()
+
+    schelling_1.plot('Schelling Model with 2 colors: Initial State', 'schelling_2_initial.png')
 
     schelling_1.update()
-    # schelling_2.update()
-    # schelling_3.update()
+    schelling_2.update()
+    schelling_3.update()
 
-    schelling_1.plot('Schelling Model with 2 colors: Final State with Similarity Threshold 80%',
+    schelling_1.plot('Schelling Model with 2 colors: Final State with Similarity Threshold 30%',
                      'schelling_2_30_final.png')
-    # schelling_2.plot('Schelling Model with 2 colors: Final State with Similarity Threshold 50%',
-    #                  'schelling_2_50_final.png')
-    # schelling_3.plot('Schelling Model with 2 colors: Final State with Similarity Threshold 80%',
-    #                  'schelling_2_80_final.png')
+    schelling_2.plot('Schelling Model with 2 colors: Final State with Similarity Threshold 50%',
+                     'schelling_2_50_final.png')
+    schelling_3.plot('Schelling Model with 2 colors: Final State with Similarity Threshold 80%',
+                     'schelling_2_80_final.png')
 
 if __name__ == '__main__':
-    # do_simulation()
+    do_simulation()
     do_similarity()
