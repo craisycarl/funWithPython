@@ -5,8 +5,8 @@ from PyQt5.uic import loadUi
 
 
 class MyPopup(QWidget):
-    def __init__(self):
-        super(MyPopup, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(MyPopup, self).__init__(*args, **kwargs)
 
     def onShowInformation(self):
         QMessageBox.information(self, "Information", "Python rocks!")
@@ -18,7 +18,7 @@ class MyPopup(QWidget):
         flags = QMessageBox.Abort
         flags |= QMessageBox.Retry
         flags |= QMessageBox.Ignore
- 
+
         result = QMessageBox.critical(self, "CRITICAL ERROR",
                                             "You're trying Perl aren't you?",
                                             flags)
@@ -31,8 +31,8 @@ class MyPopup(QWidget):
 
 
 class ConfigGUITop(QMainWindow):
-    def __init__(self):
-        super(ConfigGUITop, self).__init__()
+    def __init__(self, *args, **kwargs):
+        super(ConfigGUITop, self).__init__(*args, **kwargs)
 
         self.ui = loadUi('mainwindow.ui', self)
         self.setWindowTitle("My Awesome App")
@@ -97,37 +97,37 @@ class ConfigGUITop(QMainWindow):
         for food in foods:
             # Create an item with a caption
             item = QStandardItem(food)
-         
+
             # Add a checkbox to it
             item.setCheckable(True)
-         
+
             # Add the item to the model
             self.model.appendRow(item)
-            
+
         for unit in units:
             item = QStandardItem(unit)
             self.model_unit.appendRow(item)
-        
+
         for emptyItem in empty:
             item = QStandardItem(emptyItem)
             item.setCheckable(True)
             self.model_group.appendRow(item)
-            
+
         for emptyItem in empty:
             item = QStandardItem(emptyItem)
             item.setCheckable(True)
             self.model_sep.appendRow(item)
-        
+
         for meas in measurements:
             # Create an item with a caption
             item = QStandardItem(meas)
-         
+
             # Add a checkbox to it
             item.setCheckable(True)
-         
+
             # Add the item to the model
             self.model_2.appendRow(item)
-            
+
         for unit in units_2:
             item = QStandardItem(unit)
             self.model_unit_2.appendRow(item)
@@ -221,10 +221,12 @@ class ConfigGUITop(QMainWindow):
                           "customer to add a customer name and address, and click "
                           "standard paragraphs to add them.")
 
-    def about_qt(self):
+    @staticmethod
+    def about_qt():
         QApplication.instance().aboutQt()
 
-    def about_test_box(self):
+    @staticmethod
+    def about_test_box():
         print "Opening a new popup window..."
         w = MyPopup()
         w.onShowInformation()
