@@ -11,7 +11,7 @@ parser.add_option("--params",
                   help="The parameters to pass to the function specified with the 'func' option. Will be evaluated "
                        "as python, so it needs to be python compatible. Ex: '(16, range(0x10), debug=True)'")
 
-#options for running groups or suites
+# options for running groups or suites
 parser.add_option("-t", "--test",
                   action="store", dest="test",
                   help="Run a test from within the desired suites, must specify suites option.")
@@ -22,7 +22,7 @@ parser.add_option("-l", "--list_tests",
                   action="store_true", dest="list_tests",
                   help="List the available tests but don't run anything")
 
-#common options
+# common options
 parser.add_option("-n", "--number_iterations",
                   action="store", dest="number_iterations", default="-1",
                   help="The number of iterations of the test to run")
@@ -41,7 +41,7 @@ parser.add_option("-a", "--api",
                   action="store", dest="api",
                   help="The API to use against this target, either ax or bx")
 
-#Advanced and/or jenkins options
+# Advanced and/or jenkins options
 parser.add_option("-b", "--buffer_writes",
                   action="store_true", dest="buffer_writes",
                   help="Save writes to a buffer and push them to the device as a single block. "
@@ -67,16 +67,16 @@ parser.add_option("--build_number",
 
 print options
 
-if(options.build_number):
+if options.build_number:
     print "Your build number is", options.build_number
 else:
-    #the default
+    # the default
     pass
 
-print "buffer writes is TRUE" if (options.buffer_writes) else "buffer wrties is FALSE"
+print "buffer writes is TRUE" if options.buffer_writes else "buffer writes is FALSE"
 
-rx_fifo = range(0,10)
-tx_fifo = [11,12,13]
+rx_fifo = range(0, 10)
+tx_fifo = [11, 12, 13]
 
 print rx_fifo
 val_rx = rx_fifo.pop(0)

@@ -1,6 +1,5 @@
 import textwrap
-
-from six.moves.BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 
 
 class HelloRequestHandler(BaseHTTPRequestHandler):
@@ -28,4 +27,5 @@ class HelloRequestHandler(BaseHTTPRequestHandler):
         
 server_address = ('', 8000)
 httpd = HTTPServer(server_address, HelloRequestHandler)
+print 'running pure python server on localhost:8000'
 httpd.serve_forever()

@@ -1,8 +1,11 @@
-# example parameters
-# -f tests.api.test_read_dev_id.bin_to_frac --params {'num':0x55}
-
-
 def main():
+    """""
+    Example usage:
+    python funcWrap.py -f tests.api.test_convert.bin_to_frac --params {'num':0x55}
+    This assumes a python file exits at tests/api/test_convert.py and the function
+      bin_to_frac accepts 'num' as a argument
+    """""
+
     from optparse import OptionParser
     from importlib import import_module
     import ast
@@ -20,9 +23,9 @@ def main():
     
     (options, args) = parser.parse_args()
     
-    if(options.func):
-        #running a single function
-        #get the modules but not the test name at the end
+    if options.func:
+        # running a single function
+        # get the modules but not the test name at the end
         test_list = options.func.replace('/', '.')
         test_list = test_list.split('.')
         test_list = [x.strip() for x in test_list]
@@ -38,5 +41,5 @@ def main():
 
         return r
     
-if __name__ == ('__main__') or ('ScriptInterpreter'):
+if __name__ == '__main__':
     script_ret = main()
