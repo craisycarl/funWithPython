@@ -26,8 +26,8 @@ def signUp():
     # validate the received values
     if _name and _email and _password:
         # All Good, let's call SQLite
-
-        _hashed_password = generate_password_hash(_password)
+        # generate_password_hash defauts to SHA-1 and 1000 itterations
+        _hashed_password = generate_password_hash(_password, method='pbkdf2:sha256:750000')
         error = sp_create_user(_name, _email, _hashed_password)
 
         if not error:
