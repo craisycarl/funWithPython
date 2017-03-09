@@ -15,4 +15,3 @@ if check_password_hash(hashed_pw, pw):
     print 'match!'
 else:
     print 'Not your password'
-    
