@@ -1,17 +1,20 @@
 import sqlite3
 
+
 def connect(sqlite_file):
     """ Make connection to an SQLite database file """
-    conn = sqlite3.connect(sqlite_file)
-    c = conn.cursor()
-    return conn, c
+    connection = sqlite3.connect(sqlite_file)
+    c_ = connection.cursor()
+    return conn, c_
 
-def close(conn):
+
+def close(connection):
     """ Commit changes and close connection to the database """
     # conn.commit()
-    conn.close()
+    connection.close()
 
-def total_rows(cursor, table_name, print_out=False):
+
+def total_rows(table_name, print_out=False):
     """ Returns the total number of rows in the database """
     c.execute('SELECT COUNT(*) FROM {}'.format(table_name))
     count = c.fetchall()
@@ -19,7 +22,8 @@ def total_rows(cursor, table_name, print_out=False):
         print('\nTotal rows: {}'.format(count[0][0]))
     return count[0][0]
 
-def table_col_info(cursor, table_name, print_out=False):
+
+def table_col_info(table_name, print_out=False):
     """ Returns a list of tuples with column informations:
         (id, name, type, notnull, default_value, primary_key)
     """
@@ -32,7 +36,8 @@ def table_col_info(cursor, table_name, print_out=False):
             print(col)
     return info
 
-def values_in_col(cursor, table_name, print_out=True):
+
+def values_in_col(table_name, print_out=True):
     """ Returns a dictionary with columns as keys and the number of not-null
         entries as associated values.
     """
@@ -56,13 +61,12 @@ def values_in_col(cursor, table_name, print_out=True):
 
 if __name__ == '__main__':
 
-    sqlite_file = 'my_first_db.sqlite'
-    table_name = 'comp'
+    sqlite_db_file = 'my_first_db.sqlite'
+    table = 'comp'
 
-    conn, c = connect(sqlite_file)
-    total_rows(c, table_name, print_out=True)
-    table_col_info(c, table_name, print_out=True)
-    values_in_col(c, table_name, print_out=True) # slow on large data bases
+    conn, c = connect(sqlite_db_file)
+    total_rows(table, print_out=True)
+    table_col_info(table, print_out=True)
+    values_in_col(table, print_out=True)  # slow on large data bases
 
     close(conn)
-
