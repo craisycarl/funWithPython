@@ -16,11 +16,8 @@ class Abstract:
 
 
 class Concrete(Abstract):
-    def my_fuc(self):
-        return 3
-
-    # def _concrete_method(self):
-    #     return 2 * 3
+    def _concrete_method(self):
+        return 2 * 3
 
 my_abc = Concrete()
 
