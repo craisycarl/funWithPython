@@ -15,13 +15,13 @@ def jaccard_set(s1, s2):
 def make_a_set_of_tokens(doc):
     tokens = re.sub("[^\w]", " ", doc)
 
-    sh = set()
+    token_set = set()
     for i in range(len(tokens)-K):
         t = tokens[i]
         for x in tokens[i+1:i+K]:
             t += ' ' + x
-        sh.add(t)
-    return sh
+        token_set.add(t)
+    return token_set
 
 
 if __name__ == '__main__':
@@ -51,8 +51,8 @@ if __name__ == '__main__':
     print "md5 hash of 'a' in hex is: {}".format(hashlib.md5('a').hexdigest())
     print "...using sha512: {}".format(hashlib.sha512('a').hexdigest())
 
-    for doc in documents:
-        sh = make_a_set_of_tokens(doc)
+    for docs in documents:
+        sh = make_a_set_of_tokens(docs)
         print "sh = {}".format(sh)
 
         bucket = map(hash, sh)
@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     print "shingles = {}".format(shingles)
 
-    combinations = list(itertools.combinations([x for x in range(len(shingles))], 2))
+    combinations = list(itertools.combinations([y for y in range(len(shingles))], 2))
     print "combinations = {}".format(combinations)
 
     for c in combinations:

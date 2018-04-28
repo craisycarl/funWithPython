@@ -26,7 +26,7 @@ def signUp():
     # validate the received values
     if _name and _email and _password:
         # All Good, let's call SQLite
-        # generate_password_hash defauts to SHA-1 and 1000 itterations
+        # generate_password_hash defaults to SHA-1 and 1000 iterations
         _hashed_password = generate_password_hash(_password, method='pbkdf2:sha256:750000')
         error = sp_create_user(_name, _email, _hashed_password)
 
@@ -59,6 +59,7 @@ def sp_create_user(name, email, password):
 
     conn.close()
     return return_val
+
 
 if __name__ == "__main__":
     app.run()
